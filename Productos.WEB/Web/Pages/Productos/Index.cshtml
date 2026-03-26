@@ -1,0 +1,48 @@
+@page
+@model Web.Pages.Productos.IndexModel
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h1>Listado de productos</h1>
+<div class="container">
+    @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+    <div class="text-center mb-4">
+        <a type="button" class="btn btn-primary" asp-page="./Agregar">Agregar</a>
+    </div>
+    <div class="row">
+        @if (Model.Productos != null && Model.Productos.Any())
+        {
+            @foreach (var producto in Model.Productos)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@producto.Nombre</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@producto.Categoria / @producto.SubCategoria</h6>
+                            <p class="card-text">@producto.CodigoBarras</p>
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <a type="button" class="btn btn-primary" asp-page="./Detalle" asp-route-id="@producto.Id">Detalle</a>
+                                <a type="button" class="btn btn-warning" asp-page="./Editar" asp-route-id="@producto.Id">Editar</a>
+                                <a type="button" class="btn btn-danger" asp-page="./Eliminar" asp-route-id="@producto.Id">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else if (string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    No hay productos registrados.
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autorizacion.Abstracciones.carlosdani-tech" Version="1.0.0" />
+    <PackageReference Include="Autorizacion.DA.carlosdani-tech" Version="1.0.0" />
+    <PackageReference Include="Autorizacion.Flujo.carlosdani-tech" Version="1.0.0" />
+    <PackageReference Include="Autorizacion.Middleware.carlosdani-tech" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
+    <ProjectReference Include="..\Flujo\Flujo.csproj" />
+    <ProjectReference Include="..\DA\DA.csproj" />
+    <ProjectReference Include="..\Reglas\Reglas.csproj" />
+  </ItemGroup>
+
+</Project>

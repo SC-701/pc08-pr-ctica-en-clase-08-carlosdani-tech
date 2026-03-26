@@ -1,0 +1,52 @@
+@page
+@model Web.Pages.Cuenta.LoginModel
+@{
+    ViewData["Title"] = "Ingreso";
+}
+
+<div class="container pb-5">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto">
+        <div class="card shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <h1 class="h2 mb-2">Iniciar sesion</h1>
+                    <p class="text-muted mb-0">Accede al modulo para administrar productos.</p>
+                </div>
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="loginInfo.CorreoElectronico" class="form-label">Correo electronico</label>
+                        <input asp-for="loginInfo.CorreoElectronico" type="email" class="form-control form-control-lg" placeholder="correo@dominio.com" />
+                        <span asp-validation-for="loginInfo.CorreoElectronico" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="loginInfo.Password" class="form-label">Contrasena</label>
+                        <input asp-for="loginInfo.Password" type="password" class="form-control form-control-lg" placeholder="Tu contrasena" />
+                        <span asp-validation-for="loginInfo.Password" class="text-danger"></span>
+                    </div>
+
+                    @if (Model.token is not null && Model.token.ValidacionExitosa == false)
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            Credenciales incorrectas.
+                        </div>
+                    }
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+                    </div>
+                </form>
+
+                <hr class="my-4" />
+                <div class="text-center">
+                    <a asp-page="/Seguridad/Registro" class="link-secondary text-decoration-none">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

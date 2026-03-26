@@ -1,0 +1,82 @@
+{
+  "info": {
+    "_postman_id": "89ec4a21-6c95-4857-b0bd-7fe05187066f",
+    "name": "Productos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51719480",
+    "_collection_link": "https://go.postman.co/collection/51719480-89ec4a21-6c95-4857-b0bd-7fe05187066f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ConsultaUSD",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJCQ0NSLVNEREUiLCJzdWIiOiJjZ3V0aWVycmV6ODA0NThAdWZpZGUuYWMuY3IiLCJhdWQiOiJTRERFLVNpdGlvRXh0ZXJubyIsImV4cCI6MjUzNDAyMzAwODAwLCJuYmYiOjE3NzA2OTE2MjUsImlhdCI6MTc3MDY5MTYyNSwianRpIjoiMzkxOWM5ODUtMDgxMC00MDUwLTkxYjktZmY3OGI1Y2Q0MThjIiwiZW1haWwiOiJjZ3V0aWVycmV6ODA0NThAdWZpZGUuYWMuY3IifQ.KtZvM9RoMsVerzRX3FKRYnEQcp2DOgEYHd9XMw9i1og",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://apim.bccr.fi.cr/SDDE/api/Bccr.GE.SDDE.Publico.Indicadores.API/cuadro/491/series?fechaInicio=2026/02/09&fechaFin=2026/02/09&idioma=ES",
+          "protocol": "https",
+          "host": [
+            "apim",
+            "bccr",
+            "fi",
+            "cr"
+          ],
+          "path": [
+            "SDDE",
+            "api",
+            "Bccr.GE.SDDE.Publico.Indicadores.API",
+            "cuadro",
+            "491",
+            "series"
+          ],
+          "query": [
+            {
+              "key": "fechaInicio",
+              "value": "2026/02/09"
+            },
+            {
+              "key": "fechaFin",
+              "value": "2026/02/09"
+            },
+            {
+              "key": "idioma",
+              "value": "ES"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ObtenerUnProducto",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7194/api/Producto/88A759D9-36A2-4A3F-AB51-27909C2B2000",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7194",
+          "path": [
+            "api",
+            "Producto",
+            "88A759D9-36A2-4A3F-AB51-27909C2B2000"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

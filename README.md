@@ -33,7 +33,7 @@ Al finalizar esta práctica, el estudiante será capaz de:
 
 ## 🏗️ Cambios en el Proyecto
 
-Aplicar seguridad sobre el proyecto existente `Producto.WEB` + `Producto.API`, siguiendo los mismos pasos de `Vehiculos.WEB` (Semana 09):
+Aplicar seguridad sobre el proyecto existente `Producto.WEB` + `Producto.API`, siguiendo los mismos pasos de `Productos.WEB` (Semana 09):
 
 ### API (`Producto.API`)
 - Agregar configuración JWT en `appsettings.json`

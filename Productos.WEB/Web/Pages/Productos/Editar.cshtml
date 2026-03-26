@@ -1,0 +1,88 @@
+@page "{id:guid}"
+@model Web.Pages.Productos.EditarModel
+@{
+    ViewData["Title"] = "Editar producto";
+}
+
+<div class="container pb-5">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto">
+        <h1 class="mb-4">Editar producto</h1>
+        <form method="post">
+            <div class="mb-3">
+                <label for="categorias">Categoria</label>
+                <select asp-for="CategoriaSeleccionada" class="form-select" asp-items="Model.Categorias" id="categorias" onchange="fetchSubCategorias()">
+                    <option value="">Seleccione una categoria</option>
+                </select>
+                <span asp-validation-for="CategoriaSeleccionada" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="subcategorias">Subcategoria</label>
+                <select asp-for="SubCategoriaSeleccionada" class="form-select" asp-items="Model.SubCategorias" id="subcategorias">
+                    <option value="">Seleccione una subcategoria</option>
+                </select>
+                <span asp-validation-for="SubCategoriaSeleccionada" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="control-label" asp-for="Producto.Nombre"></label>
+                <input class="form-control" asp-for="Producto.Nombre" />
+                <span class="text-danger" asp-validation-for="Producto.Nombre"></span>
+            </div>
+            <div class="mb-3">
+                <label class="control-label" asp-for="Producto.CodigoBarras"></label>
+                <input class="form-control" asp-for="Producto.CodigoBarras" />
+                <span class="text-danger" asp-validation-for="Producto.CodigoBarras"></span>
+            </div>
+            <div class="mb-3">
+                <label class="control-label" asp-for="Producto.Descripcion"></label>
+                <textarea class="form-control" asp-for="Producto.Descripcion" rows="4"></textarea>
+                <span class="text-danger" asp-validation-for="Producto.Descripcion"></span>
+            </div>
+            <div class="mb-3">
+                <label class="control-label" asp-for="Producto.Precio"></label>
+                <input class="form-control" asp-for="Producto.Precio" />
+                <span class="text-danger" asp-validation-for="Producto.Precio"></span>
+            </div>
+            <div class="mb-3">
+                <label class="control-label" asp-for="Producto.Stock"></label>
+                <input class="form-control" asp-for="Producto.Stock" />
+                <span class="text-danger" asp-validation-for="Producto.Stock"></span>
+            </div>
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="d-flex flex-wrap gap-2 mt-4 mb-4">
+                <a class="btn btn-primary" asp-page="./Index">Regresar</a>
+                <input type="submit" value="Editar" class="btn btn-success" />
+            </div>
+            <input type="hidden" asp-for="Producto.Id" />
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        async function fetchSubCategorias() {
+            const categoriaId = document.getElementById("categorias").value;
+            const subCategoriasSelect = document.getElementById("subcategorias");
+
+            subCategoriasSelect.innerHTML = '<option value="">Seleccione una subcategoria</option>';
+
+            if (!categoriaId) {
+                return;
+            }
+
+            try {
+                const respuesta = await fetch(`?handler=ObtenerSubCategorias&categoriaId=${categoriaId}`);
+                const subCategorias = await respuesta.json();
+
+                subCategorias.forEach(subCategoria => {
+                    const option = document.createElement("option");
+                    option.value = subCategoria.id;
+                    option.text = subCategoria.nombre;
+                    subCategoriasSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Error obteniendo subcategorias", error);
+            }
+        }
+    </script>
+}
